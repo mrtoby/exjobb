@@ -153,4 +153,9 @@ public class Category implements Serializable {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	public List<Category> findCategories(final String name, final String shortname) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

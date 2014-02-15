@@ -3,7 +3,6 @@ package se.tanke.exjobb.prevayler.rest;
 import java.util.List;
 
 import javax.inject.Inject;
-import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -13,15 +12,21 @@ import javax.ws.rs.QueryParam;
 
 import org.prevayler.Prevayler;
 
+import se.tanke.exjobb.prevayler.cmd.AddPublication;
 import se.tanke.exjobb.prevayler.cmd.CreateCategory;
 import se.tanke.exjobb.prevayler.model.Category;
 import se.tanke.exjobb.prevayler.model.CategoryInfo;
 import se.tanke.exjobb.prevayler.model.Library;
-import se.tanke.exjobb.prevayler.model.Publication;
+import se.tanke.exjobb.prevayler.model.PublicationInfo;
 import se.tanke.exjobb.util.ISBN;
 
+/**
+ * Rest service for dealing with categories.
+ * 
+ * @author tobias
+ */
 @Path("prevayler/category")
-public class RestCategoryService {
+public class RestCategoryService extends AbstractRestService {
 
 	@Inject private Prevayler<Library> prevayler;
 	
@@ -30,30 +35,30 @@ public class RestCategoryService {
 	}
 	
 	@GET
-	public List<Category> findCategories(
+	public List<CategoryInfo> findCategories(
 			@QueryParam("name") final String name,
 			@QueryParam("shortname") final String shortname) {
-		return null;
+		return toCategoryInfo(getLibrary().getAllItems().findCategories(name, shortname));
 	}
 	
 	@GET
 	@Path("{shortname}")
-	public Category getCategory(@PathParam("shortname") final Category.Key shortname) {
-		return getLibrary().get(shortname);
+	public CategoryInfo getCategory(@PathParam("shortname") final Category.Key shortname) {
+		return getLibrary().get(shortname).getInfo();
 	}
 	
 	@GET
 	@Path("{shortname}/publication")
-	public List<Publication> findPublicationsInCategory(
+	public List<PublicationInfo> findPublicationsInCategory(
 			@PathParam("shortname") final Category.Key shortname,
 			@QueryParam("title") final String title,
 			@QueryParam("author") final String author,
 			@QueryParam("keywords") final String keywords) {
-		return getLibrary().get(shortname).findPublications(title, author, keywords.split("\\s+"));
+		return toPublicationInfo(getLibrary().get(shortname)
+				.findPublications(title, author, keywords.split("\\s+")));
 	}
 	
 	@POST
-	@Consumes("application/json")
 	public void createCategory(final CategoryInfo categoryInfo) {
 		prevayler.execute(new CreateCategory(categoryInfo));
 	}
@@ -63,6 +68,12 @@ public class RestCategoryService {
 	public void addPublicationToCategory(
 			@PathParam("shortname") final Category.Key shortname,
 			@PathParam("isbn") final ISBN isbn) {
-		
+		prevayler.execute(new AddPublication(isbn, shortname));
+	}
+	
+	@GET
+	@Path("{shortname}/category")
+	public List<CategoryInfo> getSubcategories(@PathParam("shortname") final Category.Key shortname) {
+		return toCategoryInfo(getLibrary().get(shortname).getCategories());
 	}
 }
