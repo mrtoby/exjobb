@@ -10,7 +10,7 @@ public abstract class AbstractModelTest {
 	
 	@BeforeClass
 	public static void setup() {
-		isbn1 = ISBN.valueOf("1234567890123");
-		isbn2 = ISBN.valueOf("1234567890124");
+		isbn1 = ISBN.valueOf("9789174612356");
+		isbn2 = ISBN.valueOf("9789185849888");
 	}
 }
