@@ -22,7 +22,7 @@ import se.tanke.exjobb.util.ISBN;
  * @author tobias
  */
 @Path("prevayler/publication")
-public class  RestPublicationService extends AbstractRestService {
+public class  RestPublicationService {
 
 	@Inject private Prevayler<Library> prevayler;
 	
@@ -32,11 +32,11 @@ public class  RestPublicationService extends AbstractRestService {
 	
 	@GET
 	public List<PublicationInfo> findPublications(
-			@QueryParam("title") final String title,
-			@QueryParam("author") final String author,
-			@QueryParam("keywords") final String keywords) {
-		return toPublicationInfo(getLibrary().getAllItems()
-				.findPublications(title, author, keywords.split("\\s+")));
+			@QueryParam("searchTitle") final String searchTitle,
+			@QueryParam("searchAuthor") final String searchAuthor,
+			@QueryParam("searchKeywords") final String searchKeywords) {
+		return new SearchPublicationFilter(searchTitle, searchAuthor, searchKeywords.split("\\s+"))
+				.filter(getLibrary().getAllItems().getPublications());
 	}
 	
 	@POST

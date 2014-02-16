@@ -76,7 +76,7 @@ public abstract class AbstractPrevaylerTest extends AbstractModelTest {
     protected PublicationInfo createPublication(final ISBN isbn, final String name,
     		final String... keywords) {
         final PublicationInfo pi = new PublicationInfo(isbn);
-        pi.setName(name);
+        pi.setTitle(name);
         for (String keyword : keywords) {
             pi.addKeyword(keyword);
         }

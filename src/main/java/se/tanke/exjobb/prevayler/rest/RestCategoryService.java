@@ -26,7 +26,7 @@ import se.tanke.exjobb.util.ISBN;
  * @author tobias
  */
 @Path("prevayler/category")
-public class RestCategoryService extends AbstractRestService {
+public class RestCategoryService {
 
 	@Inject private Prevayler<Library> prevayler;
 	
@@ -36,9 +36,10 @@ public class RestCategoryService extends AbstractRestService {
 	
 	@GET
 	public List<CategoryInfo> findCategories(
-			@QueryParam("name") final String name,
-			@QueryParam("shortname") final String shortname) {
-		return toCategoryInfo(getLibrary().getAllItems().findCategories(name, shortname));
+			@QueryParam("searchName") final String searchName,
+			@QueryParam("searchShortname") final String searchShortname) {
+		return new SearchCategoryFilter(searchName, searchShortname)
+				.filter(getLibrary().getAllItems().getCategories());
 	}
 	
 	@GET
@@ -51,11 +52,11 @@ public class RestCategoryService extends AbstractRestService {
 	@Path("{shortname}/publication")
 	public List<PublicationInfo> findPublicationsInCategory(
 			@PathParam("shortname") final Category.Key shortname,
-			@QueryParam("title") final String title,
-			@QueryParam("author") final String author,
-			@QueryParam("keywords") final String keywords) {
-		return toPublicationInfo(getLibrary().get(shortname)
-				.findPublications(title, author, keywords.split("\\s+")));
+			@QueryParam("searchTitle") final String searchTitle,
+			@QueryParam("searchAuthor") final String searchAuthor,
+			@QueryParam("searchKeywords") final String searchKeywords) {
+		return new SearchPublicationFilter(searchTitle, searchAuthor, searchKeywords.split("\\s+"))
+				.filter(getLibrary().get(shortname).getPublications());
 	}
 	
 	@POST
@@ -73,7 +74,11 @@ public class RestCategoryService extends AbstractRestService {
 	
 	@GET
 	@Path("{shortname}/category")
-	public List<CategoryInfo> getSubcategories(@PathParam("shortname") final Category.Key shortname) {
-		return toCategoryInfo(getLibrary().get(shortname).getCategories());
+	public List<CategoryInfo> getSubcategories(
+			@PathParam("shortname") final Category.Key shortname,
+			@QueryParam("searchName") final String searchName,
+			@QueryParam("searchShortname") final String searchShortname) {
+		return new SearchCategoryFilter(searchName, searchShortname)
+				.filter(getLibrary().get(shortname).getCategories());
 	}
 }

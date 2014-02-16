@@ -26,7 +26,7 @@ public class PublicationInfo implements Serializable {
     
     protected PublicationInfo(final PublicationInfo template) {
         this(template.getISBN());
-        this.title = template.getName();
+        this.title = template.getTitle();
         this.keywords.addAll(template.keywords);
     }
     
@@ -34,12 +34,12 @@ public class PublicationInfo implements Serializable {
         return isbn;
     }
 
-    public String getName() {
+    public String getTitle() {
         return title;
     }
 
-    public void setName(final String name) {
-        this.title = name;
+    public void setTitle(final String title) {
+        this.title = title;
     }
 
     public String getAuthor() {
