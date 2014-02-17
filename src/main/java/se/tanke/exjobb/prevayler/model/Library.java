@@ -2,9 +2,6 @@ package se.tanke.exjobb.prevayler.model;
 
 import java.io.Serializable;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Named;
-
 import se.tanke.exjobb.util.ISBN;
 
 /**

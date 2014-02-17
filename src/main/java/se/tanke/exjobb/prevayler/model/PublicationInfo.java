@@ -51,15 +51,15 @@ public class PublicationInfo implements Serializable {
 	}
 
 	public void addKeyword(final String keyword) {
-        keywords.add(keyword);
+        keywords.add(normalize(keyword));
     }
     
     public void removeKeyword(final String keyword) {
-        keywords.remove(keyword);
+        keywords.remove(normalize(keyword));
     }
     
     public boolean hasKeyword(final String keyword) {
-        return keywords.contains(keyword);
+        return keywords.contains(normalize(keyword));
     }
     
     public Set<String> getKeywords() {
@@ -68,5 +68,9 @@ public class PublicationInfo implements Serializable {
 
     public ISBN toKey() {
         return getISBN();
+    }
+    
+    private static String normalize(String keyword) {
+    	return keyword.toLowerCase();
     }
 }

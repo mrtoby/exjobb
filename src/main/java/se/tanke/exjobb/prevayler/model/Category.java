@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import se.tanke.exjobb.util.AbstractUnaryKey;
@@ -147,15 +146,4 @@ public class Category implements Serializable {
 			return new Key(shortname);
 		}
     }
-
-	public List<Publication> findPublications(final String title, final String author,
-			final String[] keyword) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public List<Category> findCategories(final String name, final String shortname) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }
