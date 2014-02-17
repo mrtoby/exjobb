@@ -1,14 +1,14 @@
 package se.tanke.exjobb.prevayler.model;
 
 import static org.junit.Assert.assertEquals;
-import static se.tanke.exjobb.util.ExjobbAssert.assertNotContains;
-import static se.tanke.exjobb.util.ExjobbAssert.assertNumberOfCategories;
-import static se.tanke.exjobb.util.ExjobbAssert.assertNumberOfPublications;
-import static se.tanke.exjobb.util.ExjobbAssert.assertSerializable;
+import static se.tanke.exjobb.testutil.ExjobbAssert.assertNotContains;
+import static se.tanke.exjobb.testutil.ExjobbAssert.assertNumberOfCategories;
+import static se.tanke.exjobb.testutil.ExjobbAssert.assertNumberOfPublications;
+import static se.tanke.exjobb.testutil.ExjobbAssert.assertSerializable;
 
 import org.junit.Test;
 
-import se.tanke.exjobb.util.AbstractModelTest;
+import se.tanke.exjobb.testutil.AbstractModelTest;
 
 public class LibraryTest extends AbstractModelTest {
 

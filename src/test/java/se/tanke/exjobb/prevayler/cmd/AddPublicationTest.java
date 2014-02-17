@@ -1,14 +1,14 @@
 package se.tanke.exjobb.prevayler.cmd;
 
-import static se.tanke.exjobb.util.ExjobbAssert.assertNumberOfCategories;
-import static se.tanke.exjobb.util.ExjobbAssert.assertNumberOfPublications;
+import static se.tanke.exjobb.testutil.ExjobbAssert.assertNumberOfCategories;
+import static se.tanke.exjobb.testutil.ExjobbAssert.assertNumberOfPublications;
 
 import org.junit.Test;
 
 import se.tanke.exjobb.prevayler.model.CategoryInfo;
 import se.tanke.exjobb.prevayler.model.Library;
 import se.tanke.exjobb.prevayler.model.PublicationInfo;
-import se.tanke.exjobb.util.AbstractPrevaylerTest;
+import se.tanke.exjobb.testutil.AbstractPrevaylerTest;
 
 public class AddPublicationTest extends AbstractPrevaylerTest {
  

@@ -3,8 +3,8 @@ package se.tanke.exjobb.prevayler.model;
 import org.junit.Assert;
 import org.junit.Test;
 
-import se.tanke.exjobb.util.AbstractModelTest;
-import se.tanke.exjobb.util.ExjobbAssert;
+import se.tanke.exjobb.testutil.AbstractModelTest;
+import se.tanke.exjobb.testutil.ExjobbAssert;
 
 public class PublicationTest extends AbstractModelTest {
     

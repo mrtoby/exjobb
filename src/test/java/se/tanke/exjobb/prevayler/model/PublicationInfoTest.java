@@ -4,11 +4,11 @@ package se.tanke.exjobb.prevayler.model;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import static se.tanke.exjobb.util.ExjobbAssert.assertSerializable;
+import static se.tanke.exjobb.testutil.ExjobbAssert.assertSerializable;
 
 import org.junit.Test;
 
-import se.tanke.exjobb.util.AbstractModelTest;
+import se.tanke.exjobb.testutil.AbstractModelTest;
 
 public class PublicationInfoTest extends AbstractModelTest {
     

@@ -1,14 +1,14 @@
 package se.tanke.exjobb.prevayler.cmd;
 
 import static org.junit.Assert.fail;
-import static se.tanke.exjobb.util.ExjobbAssert.assertContains;
-import static se.tanke.exjobb.util.ExjobbAssert.assertNotContains;
-import static se.tanke.exjobb.util.ExjobbAssert.assertNumberOfPublications;
+import static se.tanke.exjobb.testutil.ExjobbAssert.assertContains;
+import static se.tanke.exjobb.testutil.ExjobbAssert.assertNotContains;
+import static se.tanke.exjobb.testutil.ExjobbAssert.assertNumberOfPublications;
 
 import org.junit.Test;
 
 import se.tanke.exjobb.prevayler.model.PublicationInfo;
-import se.tanke.exjobb.util.AbstractPrevaylerTest;
+import se.tanke.exjobb.testutil.AbstractPrevaylerTest;
 
 public class CreatePublicationTest extends AbstractPrevaylerTest {
 

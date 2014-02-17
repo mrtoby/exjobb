@@ -6,10 +6,10 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
+import se.tanke.exjobb.exception.DuplicateItemException;
+import se.tanke.exjobb.exception.NoSuchItemException;
 import se.tanke.exjobb.util.AbstractUnaryKey;
-import se.tanke.exjobb.util.DuplicateItemException;
 import se.tanke.exjobb.util.ISBN;
-import se.tanke.exjobb.util.NoSuchItemException;
 
 /**
  * A category is a grouping of publications that is hierarchical. 

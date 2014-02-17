@@ -2,17 +2,17 @@ package se.tanke.exjobb.prevayler.model;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
-import static se.tanke.exjobb.util.ExjobbAssert.assertContains;
-import static se.tanke.exjobb.util.ExjobbAssert.assertNotContains;
-import static se.tanke.exjobb.util.ExjobbAssert.assertNumberOfCategories;
-import static se.tanke.exjobb.util.ExjobbAssert.assertNumberOfPublications;
-import static se.tanke.exjobb.util.ExjobbAssert.assertSerializable;
+import static se.tanke.exjobb.testutil.ExjobbAssert.assertContains;
+import static se.tanke.exjobb.testutil.ExjobbAssert.assertNotContains;
+import static se.tanke.exjobb.testutil.ExjobbAssert.assertNumberOfCategories;
+import static se.tanke.exjobb.testutil.ExjobbAssert.assertNumberOfPublications;
+import static se.tanke.exjobb.testutil.ExjobbAssert.assertSerializable;
 
 import org.junit.Test;
 
-import se.tanke.exjobb.util.AbstractModelTest;
-import se.tanke.exjobb.util.DuplicateItemException;
-import se.tanke.exjobb.util.NoSuchItemException;
+import se.tanke.exjobb.exception.DuplicateItemException;
+import se.tanke.exjobb.exception.NoSuchItemException;
+import se.tanke.exjobb.testutil.AbstractModelTest;
 
 public class CategoryTest extends AbstractModelTest {
     

@@ -1,13 +1,13 @@
 package se.tanke.exjobb.prevayler.cmd;
 
-import static se.tanke.exjobb.util.ExjobbAssert.assertContains;
-import static se.tanke.exjobb.util.ExjobbAssert.assertNotContains;
-import static se.tanke.exjobb.util.ExjobbAssert.assertNumberOfCategories;
+import static se.tanke.exjobb.testutil.ExjobbAssert.assertContains;
+import static se.tanke.exjobb.testutil.ExjobbAssert.assertNotContains;
+import static se.tanke.exjobb.testutil.ExjobbAssert.assertNumberOfCategories;
 
 import org.junit.Test;
 
 import se.tanke.exjobb.prevayler.model.CategoryInfo;
-import se.tanke.exjobb.util.AbstractPrevaylerTest;
+import se.tanke.exjobb.testutil.AbstractPrevaylerTest;
 
  public class CreateCategoryTest extends AbstractPrevaylerTest {
  

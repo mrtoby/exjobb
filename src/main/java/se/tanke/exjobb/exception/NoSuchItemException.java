@@ -1,4 +1,4 @@
-package se.tanke.exjobb.util;
+package se.tanke.exjobb.exception;
 
 public class NoSuchItemException extends RuntimeException {
 

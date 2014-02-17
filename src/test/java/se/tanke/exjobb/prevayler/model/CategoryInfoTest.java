@@ -1,7 +1,7 @@
 package se.tanke.exjobb.prevayler.model;
 
 import static org.junit.Assert.assertEquals;
-import static se.tanke.exjobb.util.ExjobbAssert.assertSerializable;
+import static se.tanke.exjobb.testutil.ExjobbAssert.assertSerializable;
 
 import org.junit.Test;
 
