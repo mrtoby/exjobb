@@ -15,6 +15,7 @@ import se.tanke.exjobb.prevayler.cmd.CreatePublication;
 import se.tanke.exjobb.prevayler.model.Library;
 import se.tanke.exjobb.prevayler.model.PublicationInfo;
 import se.tanke.exjobb.util.ISBN;
+import se.tanke.exjobb.util.SearchPublicationFilter;
 
 /**
  * Rest service for dealing with publications.

@@ -1,7 +1,6 @@
 package se.tanke.exjobb.prevayler.model;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
 import static se.tanke.exjobb.testutil.ExjobbAssert.assertContains;
 import static se.tanke.exjobb.testutil.ExjobbAssert.assertNotContains;
 import static se.tanke.exjobb.testutil.ExjobbAssert.assertNumberOfCategories;
@@ -84,6 +83,21 @@ public class CategoryTest extends AbstractModelTest {
         assertNumberOfCategories(sut, 2);
     }
     
+    @Test
+    public void addingDeepStructuresShouldWork() {
+        final Category c1 = new Category("c1");
+        final Category c2 = new Category("c2");
+        final Category c3 = new Category("c3");
+        final Category c4 = new Category("c4");
+        final Category c5 = new Category("c5");
+        
+        c2.add(c3);
+        c3.add(c4);
+        c4.add(c5);
+
+        c1.add(c2);
+    }
+    
     @Test(expected = DuplicateItemException.class)
     public void addingTwoDifferentSubCategoriesWithSameKeyShouldThrow() {
         final Category c1 = new Category("c1");
@@ -92,11 +106,7 @@ public class CategoryTest extends AbstractModelTest {
         
         sut.add(c1);
         sut.add(c1Prim);
-        
-        fail("Should have thrown already");
     }
-
-
 
     @Test
     public void removeSubcategory() {
@@ -131,11 +141,14 @@ public class CategoryTest extends AbstractModelTest {
     public void addingCircularCategoryShouldThrow() {
         final Category c1 = new Category("c1");
         final Category c2 = new Category("c2");
+        final Category c3 = new Category("c3");
+        final Category c4 = new Category("c4");
         
+        c2.add(c3);
+        c3.add(c4);
+        c4.add(c1);
+
         c1.add(c2);
-        c2.add(c1);
-        
-        fail("Should have thrown exception");
     }
     
     @Test
@@ -183,8 +196,6 @@ public class CategoryTest extends AbstractModelTest {
         
         sut.add(p1);
         sut.add(p1Prim);
-        
-        fail("Should have thrown already");
     }
 
     @Test(expected = NoSuchItemException.class)

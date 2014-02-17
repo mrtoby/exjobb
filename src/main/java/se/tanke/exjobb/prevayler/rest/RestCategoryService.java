@@ -19,6 +19,8 @@ import se.tanke.exjobb.prevayler.model.CategoryInfo;
 import se.tanke.exjobb.prevayler.model.Library;
 import se.tanke.exjobb.prevayler.model.PublicationInfo;
 import se.tanke.exjobb.util.ISBN;
+import se.tanke.exjobb.util.SearchCategoryFilter;
+import se.tanke.exjobb.util.SearchPublicationFilter;
 
 /**
  * Rest service for dealing with categories.

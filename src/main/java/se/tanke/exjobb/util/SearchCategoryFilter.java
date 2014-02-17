@@ -1,4 +1,4 @@
-package se.tanke.exjobb.prevayler.rest;
+package se.tanke.exjobb.util;
 
 import static se.tanke.exjobb.util.StringUtils.matches;
 
