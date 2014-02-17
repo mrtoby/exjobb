@@ -14,7 +14,7 @@ public class CreatePublicationTest extends AbstractPrevaylerTest {
 
     @Test
     public void createSinglePublication() {
-        PublicationInfo pi = createPublication(isbn1, "Publication name");
+        PublicationInfo pi = commandInvoker.createPublication(isbn1, "Publication name");
         
         assertContains(getAllItems(), pi.toKey());
         assertNumberOfPublications(getAllItems(), 1);
@@ -22,7 +22,7 @@ public class CreatePublicationTest extends AbstractPrevaylerTest {
     
     @Test
     public void newPublicationNotAddedToRoot() {
-        PublicationInfo pi = createPublication(isbn1, "Publication name");
+        PublicationInfo pi = commandInvoker.createPublication(isbn1, "Publication name");
         
         assertNotContains(getRoot(), pi.toKey());
         assertNumberOfPublications(getRoot(), 0);
@@ -30,8 +30,8 @@ public class CreatePublicationTest extends AbstractPrevaylerTest {
     
     @Test
     public void createTwoPublications() {
-        PublicationInfo p1 = createPublication(isbn1, "Publication name");
-        PublicationInfo p2 = createPublication(isbn2, "Publication name");
+        PublicationInfo p1 = commandInvoker.createPublication(isbn1, "Publication name");
+        PublicationInfo p2 = commandInvoker.createPublication(isbn2, "Publication name");
         
         assertContains(getAllItems(), p1.toKey());
         assertContains(getAllItems(), p2.toKey());
@@ -40,8 +40,8 @@ public class CreatePublicationTest extends AbstractPrevaylerTest {
     
     @Test(expected = IllegalStateException.class)
     public void createCategoryWithSameKeyTwice() {
-        createPublication(isbn1, "Publication name");
-        createPublication(isbn1, "Publication name");
+    	commandInvoker.createPublication(isbn1, "Publication name");
+    	commandInvoker.createPublication(isbn1, "Publication name");
         fail("Should have thrown already");
     }
 }

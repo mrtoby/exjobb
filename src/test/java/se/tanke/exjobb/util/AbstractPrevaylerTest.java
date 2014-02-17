@@ -7,10 +7,6 @@ import org.junit.Before;
 import org.prevayler.Prevayler;
 import org.prevayler.PrevaylerFactory;
 
-import se.tanke.exjobb.prevayler.cmd.AddPublication;
-import se.tanke.exjobb.prevayler.cmd.AddSubCategory;
-import se.tanke.exjobb.prevayler.cmd.CreateCategory;
-import se.tanke.exjobb.prevayler.cmd.CreatePublication;
 import se.tanke.exjobb.prevayler.model.Category;
 import se.tanke.exjobb.prevayler.model.CategoryInfo;
 import se.tanke.exjobb.prevayler.model.Library;
@@ -21,11 +17,12 @@ public abstract class AbstractPrevaylerTest extends AbstractModelTest {
 
     /** The prevalent system. */
     protected Prevayler<Library> prevayler;
+    protected PrevaylerCommandInvoker commandInvoker;
 
     @Before
     public void setupTest() {
-        final Library library = new Library();
-        prevayler = PrevaylerFactory.createTransientPrevayler(library);
+        prevayler = PrevaylerFactory.createTransientPrevayler(new Library());
+        commandInvoker = new PrevaylerCommandInvoker(prevayler);
     }
     
     @After
@@ -60,31 +57,5 @@ public abstract class AbstractPrevaylerTest extends AbstractModelTest {
 
     protected Publication toPublication(final ISBN isbn) {
         return getLibrary().getAllItems().get(isbn);
-    }
-
-    protected CategoryInfo createCategory(final String shortname, final String name) {
-        final CategoryInfo ci = new CategoryInfo(shortname);
-        ci.setName(name);
-        prevayler.execute(new CreateCategory(ci));
-        return ci;
-    }
-
-    protected void addSubCategory(final Category.Key c, final Category.Key sc) {
-        prevayler.execute(new AddSubCategory(sc, c));
-    }
-    
-    protected PublicationInfo createPublication(final ISBN isbn, final String name,
-    		final String... keywords) {
-        final PublicationInfo pi = new PublicationInfo(isbn);
-        pi.setTitle(name);
-        for (String keyword : keywords) {
-            pi.addKeyword(keyword);
-        }
-        prevayler.execute(new CreatePublication(pi));
-        return pi;
-    }
-    
-    protected void addPublication(final ISBN isbn, final Category.Key c) {
-        prevayler.execute(new AddPublication(isbn, c));
     }
 }

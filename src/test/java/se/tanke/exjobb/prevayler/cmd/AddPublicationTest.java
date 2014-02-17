@@ -14,9 +14,9 @@ public class AddPublicationTest extends AbstractPrevaylerTest {
  
     @Test
     public void addPublicationToRootCategory() {
-        PublicationInfo pi = createPublication(isbn1, "Publication name");
+        PublicationInfo pi = commandInvoker.createPublication(isbn1, "Publication name");
         
-        addPublication(pi.toKey(), Library.ROOT_CATEGORY_KEY);
+        commandInvoker.addPublication(pi.toKey(), Library.ROOT_CATEGORY_KEY);
         
         assertNumberOfPublications(getRoot(), 1);
         assertNumberOfPublications(getAllItems(), 1);
@@ -24,10 +24,10 @@ public class AddPublicationTest extends AbstractPrevaylerTest {
     
     @Test
     public void addPublicationToNewCategory() {
-        CategoryInfo ci = createCategory("c1", "Category name");
-        PublicationInfo pi = createPublication(isbn1, "Publication name");
+        CategoryInfo ci = commandInvoker.createCategory("c1", "Category name");
+        PublicationInfo pi = commandInvoker.createPublication(isbn1, "Publication name");
         
-        addPublication(pi.toKey(), ci.toKey());
+        commandInvoker.addPublication(pi.toKey(), ci.toKey());
         
         assertNumberOfPublications(getRoot(), 0);
         assertNumberOfPublications(toCategory(ci), 1);
@@ -37,10 +37,10 @@ public class AddPublicationTest extends AbstractPrevaylerTest {
     
     @Test
     public void addPublicationTwiceToSameCategory() {
-        PublicationInfo pi = createPublication(isbn1, "Publication name");
+        PublicationInfo pi = commandInvoker.createPublication(isbn1, "Publication name");
         
-        addPublication(pi.toKey(), Library.ROOT_CATEGORY_KEY);
-        addPublication(pi.toKey(), Library.ROOT_CATEGORY_KEY);
+        commandInvoker.addPublication(pi.toKey(), Library.ROOT_CATEGORY_KEY);
+        commandInvoker.addPublication(pi.toKey(), Library.ROOT_CATEGORY_KEY);
         
         assertNumberOfPublications(getRoot(), 1);
         assertNumberOfPublications(getAllItems(), 1);
@@ -48,11 +48,11 @@ public class AddPublicationTest extends AbstractPrevaylerTest {
 
     @Test
     public void addTwoPublications() {
-        PublicationInfo p1 = createPublication(isbn1, "Publication name");
-        PublicationInfo p2 = createPublication(isbn2, "Publication name");
+        PublicationInfo p1 = commandInvoker.createPublication(isbn1, "Publication name");
+        PublicationInfo p2 = commandInvoker.createPublication(isbn2, "Publication name");
         
-        addPublication(p1.toKey(), Library.ROOT_CATEGORY_KEY);
-        addPublication(p2.toKey(), Library.ROOT_CATEGORY_KEY);
+        commandInvoker.addPublication(p1.toKey(), Library.ROOT_CATEGORY_KEY);
+        commandInvoker.addPublication(p2.toKey(), Library.ROOT_CATEGORY_KEY);
         
         assertNumberOfPublications(getRoot(), 2);
         assertNumberOfPublications(getAllItems(), 2);

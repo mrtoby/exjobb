@@ -13,7 +13,7 @@ import se.tanke.exjobb.util.AbstractPrevaylerTest;
  
     @Test
     public void createSingleCategory() {
-        CategoryInfo ci = createCategory("c1", "Category name");
+        CategoryInfo ci = commandInvoker.createCategory("c1", "Category name");
         
         assertContains(getAllItems(), ci.toKey());
         assertNumberOfCategories(getAllItems(), 1);
@@ -21,7 +21,7 @@ import se.tanke.exjobb.util.AbstractPrevaylerTest;
     
     @Test
     public void newCategoryNotAddedToRoot() {
-        CategoryInfo ci = createCategory("c1", "Category name");
+        CategoryInfo ci = commandInvoker.createCategory("c1", "Category name");
         
         assertNotContains(getRoot(), ci.toKey());
         assertNumberOfCategories(getRoot(), 0);
@@ -29,8 +29,8 @@ import se.tanke.exjobb.util.AbstractPrevaylerTest;
     
     @Test
     public void createTwoCategories() {
-        CategoryInfo c1 = createCategory("c1", "Category name");
-        CategoryInfo c2 = createCategory("c2", "Category name");
+        CategoryInfo c1 = commandInvoker.createCategory("c1", "Category name");
+        CategoryInfo c2 = commandInvoker.createCategory("c2", "Category name");
         
         assertContains(getAllItems(), c1.toKey());
         assertContains(getAllItems(), c2.toKey());
@@ -39,7 +39,7 @@ import se.tanke.exjobb.util.AbstractPrevaylerTest;
     
     @Test(expected = IllegalStateException.class)
     public void createCategoryWithSameKeyTwice() {
-        createCategory("c1", "Category name");
-        createCategory("c1", "Category name");
+    	commandInvoker.createCategory("c1", "Category name");
+    	commandInvoker.createCategory("c1", "Category name");
     }   
 }

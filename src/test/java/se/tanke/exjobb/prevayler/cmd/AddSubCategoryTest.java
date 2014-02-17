@@ -13,9 +13,9 @@ public class AddSubCategoryTest extends AbstractPrevaylerTest {
     
     @Test
     public void addToRootCategory() {
-        CategoryInfo ci = createCategory("c1", "Category");
+        CategoryInfo ci = commandInvoker.createCategory("c1", "Category");
         
-        addSubCategory(Library.ROOT_CATEGORY_KEY, ci.toKey());
+        commandInvoker.addSubCategory(Library.ROOT_CATEGORY_KEY, ci.toKey());
         
         assertNumberOfCategories(getAllItems(), 1);
         assertContains(getRoot(), ci.toKey());
@@ -24,10 +24,10 @@ public class AddSubCategoryTest extends AbstractPrevaylerTest {
     
     @Test
     public void addToNewCategory() {
-        CategoryInfo c1 = createCategory("c1", "Category");
-        CategoryInfo c2 = createCategory("c2", "Category");
+        CategoryInfo c1 = commandInvoker.createCategory("c1", "Category");
+        CategoryInfo c2 = commandInvoker.createCategory("c2", "Category");
         
-        addSubCategory(c1.toKey(), c2.toKey());
+        commandInvoker.addSubCategory(c1.toKey(), c2.toKey());
         
         assertContains(toCategory(c1), c2.toKey());
         assertNumberOfCategories(getAllItems(), 2);
