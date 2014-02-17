@@ -1,4 +1,4 @@
-package se.tanke.exjobb.util;
+package se.tanke.exjobb.testutil;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -7,6 +7,7 @@ import static org.junit.Assert.assertTrue;
 import java.io.Serializable;
 
 import se.tanke.exjobb.prevayler.model.Category;
+import se.tanke.exjobb.util.ISBN;
 
 /**
  *

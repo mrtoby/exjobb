@@ -1,4 +1,4 @@
-package se.tanke.exjobb.util;
+package se.tanke.exjobb.testutil;
 
 import java.io.IOException;
 
@@ -12,6 +12,8 @@ import se.tanke.exjobb.prevayler.model.CategoryInfo;
 import se.tanke.exjobb.prevayler.model.Library;
 import se.tanke.exjobb.prevayler.model.Publication;
 import se.tanke.exjobb.prevayler.model.PublicationInfo;
+import se.tanke.exjobb.util.ISBN;
+import se.tanke.exjobb.util.PrevaylerCommandInvoker;
 
 public abstract class AbstractPrevaylerTest extends AbstractModelTest {
 

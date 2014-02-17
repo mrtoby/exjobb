@@ -1,6 +1,8 @@
-package se.tanke.exjobb.util;
+package se.tanke.exjobb.testutil;
 
 import org.junit.BeforeClass;
+
+import se.tanke.exjobb.util.ISBN;
 
 public abstract class AbstractModelTest {
 
